@@ -10,8 +10,8 @@ import {
 export enum ContactGender {
   MALE = "male",
   FEMALE = "female",
-  NOBINARY = "no binary",
-  DEFAULT = "I prefer not to say",
+  NOBINARY = "Not binary",
+  DEFAULT = "Not informed",
 }
 
 @Entity("contacts")
