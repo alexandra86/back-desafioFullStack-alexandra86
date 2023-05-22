@@ -10,7 +10,7 @@ export const contactSchema = z.object({
 
 export const returnContactSchema = contactSchema.extend({
   id: z.number(),
-  registerDate: z.string().datetime(),
+  registerDate: z.date().optional(),
 });
 
 export const returnAllContactSchema = returnContactSchema.array();

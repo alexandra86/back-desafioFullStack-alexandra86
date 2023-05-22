@@ -12,7 +12,7 @@ export const clientSchema = z.object({
 export const returnClientSchema = clientSchema
   .extend({
     id: z.number(),
-    registerDate: z.string().datetime(),
+    registerDate: z.date().optional(),
   })
   .omit({ password: true });
 
