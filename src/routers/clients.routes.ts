@@ -1,9 +1,12 @@
 import { Router } from "express";
 import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middeware";
-import { clientSchema } from "../schemas/clients.schema";
+import { clientSchema, updateClientSchema } from "../schemas/clients.schema";
 import {
   createClientController,
+  deleteClientController,
   listClientsController,
+  retrieveClientsController,
+  updateClientController,
 } from "../controllers/clients.controllers";
 
 export const clientsRoutes = Router();
@@ -14,5 +17,12 @@ clientsRoutes.post(
   createClientController
 );
 clientsRoutes.get("", listClientsController);
-clientsRoutes.patch("/:id");
-clientsRoutes.delete("/:id");
+
+clientsRoutes.get("/:id", retrieveClientsController);
+
+clientsRoutes.patch(
+  "/:id",
+  ensureDataIsValidMiddleware(updateClientSchema),
+  updateClientController
+);
+clientsRoutes.delete("/:id", deleteClientController);
