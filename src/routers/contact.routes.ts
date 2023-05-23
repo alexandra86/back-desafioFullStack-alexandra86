@@ -8,8 +8,12 @@ import {
   retrieveContactController,
   updateContactController,
 } from "../controllers/contact.controllers";
+import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
+import { ensureClientExistsMiddleware } from "../middlewares/ensureClientExists.middleware";
 
 export const contactRoutes = Router();
+
+contactRoutes.use(ensureTokenIsValidMiddleware);
 
 contactRoutes.post(
   "",
