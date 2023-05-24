@@ -7,9 +7,9 @@ import {
 import { returnAllClientSchema } from "../../schemas/clients.schema";
 
 export const listClientsService = async (): Promise<IAllClientReturn> => {
-  const userRepository: iClientRepo = AppDataSource.getRepository(Client);
+  const clientRepository: iClientRepo = AppDataSource.getRepository(Client);
 
-  const findClients: Array<Client> = await userRepository.find();
+  const findClients: Array<Client> = await clientRepository.find();
 
   const clients = returnAllClientSchema.parse(findClients);
   return clients;
