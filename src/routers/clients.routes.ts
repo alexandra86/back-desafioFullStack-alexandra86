@@ -11,6 +11,7 @@ import {
 import { ensureEmailExistsMiddleware } from "../middlewares/ensureEmailExists.middleware";
 import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
 import { ensureClientExistsMiddleware } from "../middlewares/ensureClientExists.middleware";
+import { ensureIsOwnerMiddleware } from "../middlewares/ensureIsOwner.middleware";
 
 export const clientsRoutes = Router();
 
@@ -28,17 +29,20 @@ clientsRoutes.get("", listClientsController);
 clientsRoutes.get(
   "/:id",
   ensureClientExistsMiddleware,
+  ensureIsOwnerMiddleware,
   retrieveClientsController
 );
 
 clientsRoutes.patch(
   "/:id",
   ensureClientExistsMiddleware,
+  ensureIsOwnerMiddleware,
   ensureDataIsValidMiddleware(updateClientSchema),
   updateClientController
 );
 clientsRoutes.delete(
   "/:id",
   ensureClientExistsMiddleware,
+  ensureIsOwnerMiddleware,
   deleteClientController
 );

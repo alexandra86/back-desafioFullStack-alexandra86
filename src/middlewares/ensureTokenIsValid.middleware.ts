@@ -21,12 +21,9 @@ export const ensureTokenIsValidMiddleware = async (
       throw new AppError(error.message, 401);
     }
 
-    // request.user = {
-    //   id: decoded.sub,
-    //   admin: decoded.admin,
-    // };
-
-    response.locals.clientId = decoded.sub;
+    request.client = {
+      id: decoded.sub,
+    };
 
     return next();
   });

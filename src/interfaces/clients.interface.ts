@@ -6,6 +6,7 @@ import {
   returnClientSchema,
 } from "../schemas/clients.schema";
 import { Client } from "../entities";
+import { IAllContactReturn } from "./contact.interface";
 
 export type IClient = z.infer<typeof clientSchema>;
 export type IClientReturn = z.infer<typeof returnClientSchema>;

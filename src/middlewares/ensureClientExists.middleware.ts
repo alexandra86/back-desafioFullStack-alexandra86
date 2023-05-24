@@ -13,12 +13,12 @@ export const ensureClientExistsMiddleware = async (
 
   const clientFind = await clientRepository.findOne({
     where: {
-      id: parseInt(request.params.id) || parseInt(response.locals.clientId),
+      id: parseInt(request.params.id) || parseInt(request.client.id),
     },
   });
 
   if (!clientFind) {
-    throw new AppError("Client not found", 404);
+    throw new AppError("Client not found!", 404);
   }
   return next();
 };

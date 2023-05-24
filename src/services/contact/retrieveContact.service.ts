@@ -4,18 +4,23 @@ import {
   IContactReturn,
   iContactRepo,
 } from "../../interfaces/contact.interface";
-import { returnContactSchema } from "../../schemas/contact.schema";
+import { returnContactWithClientSchema } from "../../schemas/contact.schema";
 
 export const retrieveContactService = async (
   id: number
 ): Promise<IContactReturn> => {
   const contactRepository: iContactRepo = AppDataSource.getRepository(Contact);
 
-  const findContact = await contactRepository.findOneBy({
-    id: id,
+  const findContact = await contactRepository.findOne({
+    where: {
+      id: id,
+    },
+    relations: {
+      client: true,
+    },
   });
 
-  const contact = returnContactSchema.parse(findContact!);
+  const contact = returnContactWithClientSchema.parse(findContact!);
 
   return contact;
 };

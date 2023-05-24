@@ -1,5 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Contact } from "../../entities";
+import { AppError } from "../../errors";
 import { iContactRepo } from "../../interfaces/contact.interface";
 
 export const deleteContactService = async (id: number): Promise<void> => {

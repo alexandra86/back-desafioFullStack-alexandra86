@@ -1,18 +1,28 @@
 import { AppDataSource } from "../../data-source";
 import { Client } from "../../entities";
-import { IClientReturn, iClientRepo } from "../../interfaces/clients.interface";
+import {
+  IClientWithContact,
+  iClientRepo,
+} from "../../interfaces/clients.interface";
 import { returnClientSchema } from "../../schemas/clients.schema";
 
 export const retrieveClientService = async (
   id: number
-): Promise<IClientReturn> => {
+): Promise<IClientWithContact> => {
   const clientRepository: iClientRepo = AppDataSource.getRepository(Client);
 
-  const findClient = await clientRepository.findOneBy({
-    id: id,
+  const findClient = await clientRepository.findOne({
+    where: {
+      id: id,
+    },
+    relations: {
+      contact: true,
+    },
   });
 
   const client = returnClientSchema.parse(findClient!);
 
-  return client;
+  const contacts = findClient ? findClient.contact : [];
+
+  return { client, contacts };
 };

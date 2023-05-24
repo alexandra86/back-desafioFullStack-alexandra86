@@ -11,8 +11,9 @@ export const createContactController = async (
   response: Response
 ) => {
   const contactData: IContact = request.body;
+  const clientId = parseInt(request.client.id);
 
-  const newContact = await createContactService(contactData);
+  const newContact = await createContactService(contactData, clientId);
 
   return response.status(201).json(newContact);
 };
@@ -21,9 +22,9 @@ export const listContactsController = async (
   request: Request,
   response: Response
 ) => {
-  const contacts = await listContactService();
+  const contact = await listContactService();
 
-  return response.json(contacts);
+  return response.json(contact);
 };
 
 export const retrieveContactController = async (

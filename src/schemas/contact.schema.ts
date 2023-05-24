@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ContactGender } from "../entities/contact.entity";
+import { returnClientSchema } from "./clients.schema";
 
 export const contactSchema = z.object({
   fullName: z.string().min(3).max(127),
@@ -11,6 +12,10 @@ export const contactSchema = z.object({
 export const returnContactSchema = contactSchema.extend({
   id: z.number(),
   registerDate: z.date().optional(),
+});
+
+export const returnContactWithClientSchema = returnContactSchema.extend({
+  client: returnClientSchema,
 });
 
 export const returnAllContactSchema = returnContactSchema.array();

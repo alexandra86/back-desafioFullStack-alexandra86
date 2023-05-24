@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ClientGender } from "../entities/clients.entity";
+import { returnAllContactSchema } from "./contact.schema";
 
 export const clientSchema = z.object({
   name: z.string().min(3).max(127),

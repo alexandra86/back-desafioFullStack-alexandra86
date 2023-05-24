@@ -31,9 +31,14 @@ export const retrieveClientsController = async (
   response: Response
 ) => {
   const id = parseInt(request.params.id);
-  const client = await retrieveClientService(id);
+  const { client, contacts } = await retrieveClientService(id);
 
-  return response.json(client);
+  const clientWithContacts = {
+    client: client,
+    contacts: contacts,
+  };
+
+  return response.json(clientWithContacts);
 };
 
 export const updateClientController = async (

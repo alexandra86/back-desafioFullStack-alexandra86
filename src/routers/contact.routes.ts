@@ -9,7 +9,8 @@ import {
   updateContactController,
 } from "../controllers/contact.controllers";
 import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
-import { ensureClientExistsMiddleware } from "../middlewares/ensureClientExists.middleware";
+import { ensureContactPermissionMiddleware } from "../middlewares/ensureContactPermission.middleware";
+import { ensureContactExistsMiddleware } from "../middlewares/ensureContactExists.middleware";
 
 export const contactRoutes = Router();
 
@@ -22,11 +23,22 @@ contactRoutes.post(
 );
 contactRoutes.get("", listContactsController);
 
-contactRoutes.get("/:id", retrieveContactController);
+contactRoutes.get(
+  "/:id",
+  ensureContactPermissionMiddleware,
+  retrieveContactController
+);
 
 contactRoutes.patch(
   "/:id",
+  ensureContactExistsMiddleware,
+  ensureContactPermissionMiddleware,
   ensureDataIsValidMiddleware(updateClontactSchema),
   updateContactController
 );
-contactRoutes.delete("/:id", deleteContactController);
+contactRoutes.delete(
+  "/:id",
+  ensureContactExistsMiddleware,
+  ensureContactPermissionMiddleware,
+  deleteContactController
+);
