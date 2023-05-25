@@ -13,3 +13,7 @@ export type IClientReturn = z.infer<typeof returnClientSchema>;
 export type IAllClientReturn = z.infer<typeof returnAllClientSchema>;
 export type iClientRepo = Repository<Client>;
 export type IUpdateClient = DeepPartial<IClient>;
+export interface IClientWithContact {
+  client: IClientReturn;
+  contacts: IAllContactReturn;
+}

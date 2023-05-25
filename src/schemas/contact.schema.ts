@@ -20,4 +20,4 @@ export const returnContactWithClientSchema = returnContactSchema.extend({
 
 export const returnAllContactSchema = returnContactSchema.array();
 
-export const updateClontactSchema = contactSchema.partial();
+export const updateContactSchema = contactSchema.partial();

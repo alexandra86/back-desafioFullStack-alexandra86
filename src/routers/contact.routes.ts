@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middeware";
-import { contactSchema, updateClontactSchema } from "../schemas/contact.schema";
+import { contactSchema, updateContactSchema } from "../schemas/contact.schema";
 import {
   createContactController,
   deleteContactController,
@@ -33,7 +33,7 @@ contactRoutes.patch(
   "/:id",
   ensureContactExistsMiddleware,
   ensureContactPermissionMiddleware,
-  ensureDataIsValidMiddleware(updateClontactSchema),
+  ensureDataIsValidMiddleware(updateContactSchema),
   updateContactController
 );
 contactRoutes.delete(
