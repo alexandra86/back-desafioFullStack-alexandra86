@@ -22,8 +22,8 @@ export class Contact {
   @Column({ type: "varchar", length: 127 })
   fullName: string;
 
-  @Column({ type: "varchar", length: 127 })
-  email: string;
+  @Column({ type: "varchar", length: 127, nullable: true })
+  email?: string | undefined | null;
 
   @Column({ type: "varchar", length: 45 })
   phone: string;

@@ -33,6 +33,9 @@ export class Client {
   @Column({ type: "varchar", length: 45 })
   phone: string;
 
+  @Column({ type: "text", nullable: true })
+  image?: string | undefined | null;
+
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   registerDate: Date;
 

@@ -6,6 +6,7 @@ export const clientSchema = z.object({
   email: z.string().email().max(127),
   password: z.string().max(120),
   phone: z.string().max(45),
+  image: z.string().optional().nullable(),
   gender: z.nativeEnum(ClientGender),
 });
 
