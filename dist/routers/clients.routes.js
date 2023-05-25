@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.clientsRoutes = void 0;
+const express_1 = require("express");
+const ensureDataIsValid_middeware_1 = require("../middlewares/ensureDataIsValid.middeware");
+const clients_schema_1 = require("../schemas/clients.schema");
+const ensureEmailExists_middleware_1 = require("../middlewares/ensureEmailExists.middleware");
+const ensureTokenIsValid_middleware_1 = require("../middlewares/ensureTokenIsValid.middleware");
+const ensureClientExists_middleware_1 = require("../middlewares/ensureClientExists.middleware");
+const ensureIsOwner_middleware_1 = require("../middlewares/ensureIsOwner.middleware");
+const clients_controllers_1 = require("../controllers/clients.controllers");
+exports.clientsRoutes = (0, express_1.Router)();
+exports.clientsRoutes.post("", ensureEmailExists_middleware_1.ensureEmailExistsMiddleware, (0, ensureDataIsValid_middeware_1.ensureDataIsValidMiddleware)(clients_schema_1.clientSchema), clients_controllers_1.createClientController);
+exports.clientsRoutes.use(ensureTokenIsValid_middleware_1.ensureTokenIsValidMiddleware);
+exports.clientsRoutes.get("", clients_controllers_1.listClientsController);
+exports.clientsRoutes.get("/:id", ensureClientExists_middleware_1.ensureClientExistsMiddleware, ensureIsOwner_middleware_1.ensureIsOwnerMiddleware, clients_controllers_1.retrieveClientsController);
+exports.clientsRoutes.patch("/:id", ensureClientExists_middleware_1.ensureClientExistsMiddleware, ensureIsOwner_middleware_1.ensureIsOwnerMiddleware, (0, ensureDataIsValid_middeware_1.ensureDataIsValidMiddleware)(clients_schema_1.updateClientSchema), clients_controllers_1.updateClientController);
+exports.clientsRoutes.delete("/:id", ensureClientExists_middleware_1.ensureClientExistsMiddleware, ensureIsOwner_middleware_1.ensureIsOwnerMiddleware, clients_controllers_1.deleteClientController);
