@@ -6,7 +6,7 @@ import { AppError } from "../errors";
 
 export const ensureEmailExistsMiddleware = async (
   request: Request,
-  response: Response,
+  _: Response,
   next: NextFunction
 ): Promise<void> => {
   const clientRepository: iClientRepo = AppDataSource.getRepository(Client);

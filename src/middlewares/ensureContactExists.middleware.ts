@@ -6,7 +6,7 @@ import { Contact } from "../entities";
 
 export const ensureContactExistsMiddleware = async (
   request: Request,
-  response: Response,
+  _: Response,
   next: NextFunction
 ): Promise<void> => {
   const contactRepository: iContactRepo = AppDataSource.getRepository(Contact);

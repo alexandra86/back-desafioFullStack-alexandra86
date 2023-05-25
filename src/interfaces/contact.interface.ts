@@ -1,12 +1,12 @@
 import { DeepPartial, Repository } from "typeorm";
 import { z } from "zod";
 import { Contact } from "../entities";
+import { IClientReturn } from "./clients.interface";
 import {
   contactSchema,
   returnAllContactSchema,
   returnContactSchema,
 } from "../schemas/contact.schema";
-import { IClientReturn } from "./clients.interface";
 
 export type IContact = z.infer<typeof contactSchema>;
 export type IContactReturn = z.infer<typeof returnContactSchema>;

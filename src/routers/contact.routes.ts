@@ -1,6 +1,9 @@
 import { Router } from "express";
 import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middeware";
 import { contactSchema, updateContactSchema } from "../schemas/contact.schema";
+import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
+import { ensureContactPermissionMiddleware } from "../middlewares/ensureContactPermission.middleware";
+import { ensureContactExistsMiddleware } from "../middlewares/ensureContactExists.middleware";
 import {
   createContactController,
   deleteContactController,
@@ -8,9 +11,6 @@ import {
   retrieveContactController,
   updateContactController,
 } from "../controllers/contact.controllers";
-import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
-import { ensureContactPermissionMiddleware } from "../middlewares/ensureContactPermission.middleware";
-import { ensureContactExistsMiddleware } from "../middlewares/ensureContactExists.middleware";
 
 export const contactRoutes = Router();
 
@@ -25,6 +25,7 @@ contactRoutes.get("", listContactsController);
 
 contactRoutes.get(
   "/:id",
+  ensureContactExistsMiddleware,
   ensureContactPermissionMiddleware,
   retrieveContactController
 );

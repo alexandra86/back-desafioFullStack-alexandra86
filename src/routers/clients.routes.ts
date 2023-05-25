@@ -1,6 +1,10 @@
 import { Router } from "express";
 import { ensureDataIsValidMiddleware } from "../middlewares/ensureDataIsValid.middeware";
 import { clientSchema, updateClientSchema } from "../schemas/clients.schema";
+import { ensureEmailExistsMiddleware } from "../middlewares/ensureEmailExists.middleware";
+import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
+import { ensureClientExistsMiddleware } from "../middlewares/ensureClientExists.middleware";
+import { ensureIsOwnerMiddleware } from "../middlewares/ensureIsOwner.middleware";
 import {
   createClientController,
   deleteClientController,
@@ -8,10 +12,6 @@ import {
   retrieveClientsController,
   updateClientController,
 } from "../controllers/clients.controllers";
-import { ensureEmailExistsMiddleware } from "../middlewares/ensureEmailExists.middleware";
-import { ensureTokenIsValidMiddleware } from "../middlewares/ensureTokenIsValid.middleware";
-import { ensureClientExistsMiddleware } from "../middlewares/ensureClientExists.middleware";
-import { ensureIsOwnerMiddleware } from "../middlewares/ensureIsOwner.middleware";
 
 export const clientsRoutes = Router();
 

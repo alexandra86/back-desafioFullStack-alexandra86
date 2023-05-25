@@ -19,7 +19,7 @@ export const createContactController = async (
 };
 
 export const listContactsController = async (
-  request: Request,
+  _: Request,
   response: Response
 ) => {
   const contact = await listContactService();

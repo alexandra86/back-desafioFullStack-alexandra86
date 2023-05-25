@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import "dotenv/config";
 import { AppError } from "../errors";
+import "dotenv/config";
 
 export const ensureTokenIsValidMiddleware = async (
   request: Request,
-  response: Response,
+  _: Response,
   next: NextFunction
 ): Promise<void> => {
   let token = request.headers.authorization;

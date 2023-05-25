@@ -17,10 +17,7 @@ export const createClientController = async (
   return response.status(201).json(newClient);
 };
 
-export const listClientsController = async (
-  request: Request,
-  response: Response
-) => {
+export const listClientsController = async (_: Request, response: Response) => {
   const clients = await listClientsService();
 
   return response.json(clients);
