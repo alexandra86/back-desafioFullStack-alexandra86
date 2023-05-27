@@ -29,7 +29,6 @@ clientsRoutes.get("", listClientsController);
 clientsRoutes.get(
   "/:id",
   ensureClientExistsMiddleware,
-  ensureIsOwnerMiddleware,
   retrieveClientsController
 );
 

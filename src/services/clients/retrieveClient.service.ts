@@ -7,19 +7,19 @@ import {
 import { returnClientSchema } from "../../schemas/clients.schema";
 
 export const retrieveClientService = async (
-  id: number
+  id: string
 ): Promise<IClientWithContact> => {
   const clientRepository: iClientRepo = AppDataSource.getRepository(Client);
 
   const findClient = await clientRepository.findOne({
     where: {
-      id: id,
+      id: parseInt(id),
     },
     relations: {
       contact: true,
     },
   });
-
+  console.log(findClient);
   const client = returnClientSchema.parse(findClient!);
 
   const contacts = findClient ? findClient.contact : [];

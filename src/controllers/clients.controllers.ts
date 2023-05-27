@@ -27,7 +27,7 @@ export const retrieveClientsController = async (
   request: Request,
   response: Response
 ) => {
-  const id = parseInt(request.params.id);
+  const id = request.client.id;
   const { client, contacts } = await retrieveClientService(id);
 
   const clientWithContacts = {
