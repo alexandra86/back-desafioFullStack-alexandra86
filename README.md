@@ -9,7 +9,7 @@
 
 <h2 font-family="pattaya">Descrição</h2><br>
 <p font-family="robotto" font-size="16px" line-height="34px" align="justify">
-A API é refrente a uma aplicação de agenda digital, onde um cliente pode criar um perfil, cadastrar, atualizar ou deletar os seus contatos.
+A API é referente a uma aplicação de agenda digital, onde um cliente pode criar um perfil, cadastrar, atualizar ou deletar os seus contatos.
 </p><br>
 
 <h2 font-family="pattaya">Libs utilizadas</h2><br>
