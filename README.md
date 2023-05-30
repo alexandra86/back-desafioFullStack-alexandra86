@@ -322,6 +322,34 @@ Não possui body
 Retorna apenas o status 204.
 ```
 
+
+### 2.1. **Login**
+
+[ Voltar para os Endpoints ](#5-endpoints)
+
+### `/login`
+
+### Exemplo de Request:
+```
+POST /login
+Host: http://localhost:3000
+Authorization: None
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+```json
+{
+	"email": "alexandra@mail.com",
+	"password": "1234",
+}
+```
+### Resposta da Requisição:
+```json
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZXhhbmRyYUBtYWlsLmNvbSIsImlhdCI6MTY4NTQ3NjAwMywiZXhwIjoxNjg1NTYyNDAzLCJzdWIiOiI2In0.xa0amJ3kE3-Pjl8ifzwKhAxaQUN2Ngu1l2boKkD4iLM"
+}
+```
 ## **contacts**
 
 A tabela contacts é definida como:
@@ -347,7 +375,7 @@ A tabela contacts é definida como:
 
 ---
 
-### 1.1. **Criar Contato**
+### 3.1. **Criar Contato**
 
 [ Voltar para os Endpoints ](#5-endpoints)
 
@@ -414,10 +442,10 @@ Não possui body.
 	}
 ]
 ```
-### 1.3. **Listar Contato por id**
+### 3.3. **Listar Contato por id**
 ### Exemplo de Request:
 ```
-GET /clients/:id
+GET /contacts/:id
 Host: http://localhost:3000
 Authorization: esta rota necessita do token do cliente  para acesso
 Content-type: application/json
@@ -449,7 +477,7 @@ Não possui body.
 
 OBS: Nesta rota há o objeto client na resposta da requisição.
 ```
-### 1.4. **Atualizar Contato por id**
+### 3.4. **Atualizar Contato por id**
 
 ### Exemplo de Request:
 ```
@@ -477,11 +505,11 @@ Content-type: application/json
 }
 ```
 
-### 1.5. **Deletar Contato por id**
+### 3.5. **Deletar Contato por id**
 
 ### Exemplo de Request:
 ```
-DELETE /clients/:id
+DELETE /contacts/:id
 Host: http://localhost:3000
 Authorization: esta rota necessita do token do cliente para acesso
 Content-type: application/json
