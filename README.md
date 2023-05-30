@@ -60,7 +60,7 @@ http://localhost:3000
 
 ---
 
-## 2. Diagrama ER
+## 2. Diagrama de Entidade de Relacionamentos (DER)
 [ Voltar para o topo ](#tabela-de-conteúdos)
 
 
