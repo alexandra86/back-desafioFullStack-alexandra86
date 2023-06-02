@@ -584,3 +584,35 @@ Vazio
 |----------------|-----------|
 | 404 Not Found   | "message": "Client not found!" |
 
+### 4.1. **Listando Relatório de Contatos**
+
+[ Voltar aos Endpoints ](#5-endpoints)
+
+### `/listContacts/`
+
+### Exemplo de Request:
+```
+GET /listContacts/
+Host: http://localhost:3000
+Authorization: esta rota necessita do token do cliente  para acesso
+Content-type: application/json
+```
+
+### Corpo da Requisição:
+```json
+Vazio
+```
+
+### Exemplo de Response:
+```
+200 OK
+```
+```pdf
+
+```
+
+### Possíveis Erros:
+
+| 401 Unauthorized  | You don`t have permissions or invalid token. |
+
+
