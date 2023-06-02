@@ -607,9 +607,12 @@ Vazio
 ```
 200 OK
 ```
-```pdf
-
 ```
+pdf
+```
+![Customer Report](costumerReportPDF.png)
+
+
 
 ### Possíveis Erros:
 
