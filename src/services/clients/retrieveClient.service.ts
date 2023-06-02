@@ -19,7 +19,7 @@ export const retrieveClientService = async (
       contact: true,
     },
   });
-  console.log(findClient);
+
   const client = returnClientSchema.parse(findClient!);
 
   const contacts = findClient ? findClient.contact : [];
