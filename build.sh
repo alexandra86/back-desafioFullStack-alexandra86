@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-export PATH=./node_modules/.bin:$PATH
 
 # exit on error
 set -o errexit
 
 yarn
-yarn tsc
+./node_modules/.bin/tsc
+yarn build
 yarn typeorm migration:run -d dist/data-source
