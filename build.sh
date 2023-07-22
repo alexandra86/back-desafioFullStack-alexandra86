@@ -5,5 +5,5 @@ export PATH=./node_modules/.bin:$PATH
 set -o errexit
 
 yarn
-npx tsc
+yarn tsc
 yarn typeorm migration:run -d dist/data-source
